@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/macro
-    username: postgres
-    password:
+    url: jdbc:postgresql://localhost:5432/macroApi
+    username: macroApi
+    password: macroApi
   jpa:
     hibernate:
       ddl-auto: create-drop
