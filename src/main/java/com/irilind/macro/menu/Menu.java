@@ -1,28 +1,25 @@
-package com.irilind.macro.foods;
+package com.irilind.macro.menu;
 
+import com.irilind.macro.foods.Food;
+import com.irilind.macro.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Food {
+public class Menu {
     @Id
     @GeneratedValue
     private Integer id;
-
-    //Make a unique constraint for name
-    @Column(unique = true)
+    @Column(nullable = false)
     private String name;
 
-    private String type;
-    private Float protein;
-    private Float carbs;
-    private Float lipids;
-    private Float caloriesFor100g;
 }
