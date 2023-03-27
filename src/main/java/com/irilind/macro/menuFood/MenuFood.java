@@ -1,4 +1,4 @@
-package com.irilind.macro.menuClass;
+package com.irilind.macro.menuFood;
 
 import com.irilind.macro.foods.Food;
 import com.irilind.macro.menu.Menu;
@@ -19,13 +19,6 @@ public class MenuFood {
     @GeneratedValue
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "menu_id")
-    private Menu menu;
-
-    @ManyToOne
-    @JoinColumn(name = "food_id")
-    private Food food;
 
     private int quantity;
 }

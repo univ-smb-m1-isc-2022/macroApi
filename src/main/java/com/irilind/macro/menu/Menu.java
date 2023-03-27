@@ -22,4 +22,12 @@ public class Menu {
     @Column(nullable = false)
     private String name;
 
+    @ManyToMany
+    @JoinTable(
+            name = "menu_food",
+            joinColumns = @JoinColumn(name = "menu_id"),
+            inverseJoinColumns = @JoinColumn(name = "food_id")
+    )
+    private List<Food> food;
+
 }
