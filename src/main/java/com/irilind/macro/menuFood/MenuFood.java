@@ -18,7 +18,13 @@ public class MenuFood {
     @Id
     @GeneratedValue
     private Integer id;
-
-
     private int quantity;
+
+    @ManyToOne
+    @JoinColumn(name = "menu_id")
+    private Menu menu;
+
+    @ManyToOne
+    @JoinColumn(name = "food_id")
+    private Food food;
 }

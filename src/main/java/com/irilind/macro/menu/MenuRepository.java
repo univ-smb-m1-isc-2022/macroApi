@@ -9,8 +9,6 @@ import java.util.List;
 public interface MenuRepository extends JpaRepository<Menu, Integer> {
     <Optional> Food findByName(String name);
 
-    List<Food> findAlFoodByMenuId(Integer id);
-
 
 
 }

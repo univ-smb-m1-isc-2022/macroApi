@@ -1,6 +1,10 @@
 package com.irilind.macro.menuFood;
 
+import com.irilind.macro.foods.Food;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class MenuFoodService {
@@ -12,6 +16,14 @@ public class MenuFoodService {
 
     public MenuFood createMenuFood(MenuFood menuFood) {
         return repository.save(menuFood);
+    }
+
+    public List<MenuFood> getAllMenuFood() {
+        return repository.findAll();
+    }
+
+    public List<MenuFood> getAllByMenuName(String menuName) {
+        return repository.findAllByMenuName(menuName);
     }
 
 }

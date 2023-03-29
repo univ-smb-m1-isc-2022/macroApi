@@ -34,8 +34,4 @@ public class Food {
     @Column(nullable = false)
     private Float caloriesFor100g;
 
-    //m:n relation with menu
-    @ManyToMany(mappedBy = "food")
-    private List<Menu> menus;
-
 }
