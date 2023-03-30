@@ -12,6 +12,12 @@ public class AuthenticationController {
 
     private final AuthenticationService service;
 
+    @PostMapping("/check")
+    public ResponseEntity<TokenCheckResponse> check(
+            @RequestBody TokenCheckRequest request
+    ) {
+        return ResponseEntity.ok(service.CheckIfTokenValid(request.getToken()));
+    }
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register(
             @RequestBody RegisterRequest request
@@ -24,6 +30,7 @@ public class AuthenticationController {
     ) {
         return ResponseEntity.ok(service.authenticate(request));
     }
+
 
 
 }

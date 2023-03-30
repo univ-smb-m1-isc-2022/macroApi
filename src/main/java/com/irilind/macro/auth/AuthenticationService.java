@@ -22,6 +22,13 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
+
+    public TokenCheckResponse CheckIfTokenValid(String token){
+        return TokenCheckResponse.builder()
+                .valid(jwtService.isTokenValidUsername(token))
+                .build();
+    }
+
     public AuthenticationResponse register(RegisterRequest request) {
         var user = User.builder()
                 .firstname(request.getFirstname())
@@ -52,6 +59,7 @@ public class AuthenticationService {
         saveUserToken(user, jwtToken);
         return AuthenticationResponse.builder()
                 .token(jwtToken)
+                .email(user.getEmail())
                 .build();
     }
 
