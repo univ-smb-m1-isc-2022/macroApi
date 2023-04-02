@@ -15,5 +15,5 @@ public interface MenuFoodRepository extends JpaRepository<MenuFood, Integer> {
 
     List<MenuFood> findAllByMenuName(String menuName);
 
-
+    List<MenuFood> findAllByMenuId(Long menuId);
 }

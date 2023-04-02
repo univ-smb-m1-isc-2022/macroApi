@@ -6,8 +6,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/v1/menu_food")
 public class MenuFoodController {
@@ -17,21 +21,31 @@ public class MenuFoodController {
     public MenuFoodController(MenuFoodService menuFoodService) {
         this.menuFoodService = menuFoodService;
     }
-    @PostMapping
-    public ResponseEntity<String> addFoodToMenu(@RequestBody MenuFood menuFood){
-        MenuFood service = menuFoodService.createMenuFood(menuFood);
-        return new ResponseEntity<>("Food added to menu", null, 200);
-    }
 
     @GetMapping
     public List<MenuFood> getAllMenuFood(){
         return menuFoodService.getAllMenuFood();
     }
 
-    @GetMapping("/menu/{menuName}")
-    public List<MenuFood> getAllByMenuName(@PathVariable String menuName){
-        return menuFoodService.getAllByMenuName(menuName);
+    @GetMapping("/menu/{menuId}")
+    public List<MenuFood> getAllByMenuId(@PathVariable Long menuId){
+        return menuFoodService.getAllByMenuId(menuId);
     }
 
+    @PostMapping
+    public ResponseEntity<Map<String, Object>> createMenuFoodApi(@RequestBody MenuFood menuFood){
+         MenuFood service = menuFoodService.createMenuFood(menuFood);
+        Map<String, Object> response = new HashMap<>();
+        response.put("success", true);
+        return ResponseEntity.ok(response);
+    }
+
+    @DeleteMapping("/menu/{id}")
+    public ResponseEntity<Map<String, Object>> deleteMenuFoodWithId(@PathVariable Integer id){
+        MenuFood menuFood = menuFoodService.deleteMenuFoodWithId(id);
+        Map<String, Object> response = new HashMap<>();
+        response.put("success", true);
+        return ResponseEntity.ok(response);
+    }
 
 }

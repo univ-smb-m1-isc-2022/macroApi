@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.sql.Date;
 
@@ -20,10 +22,11 @@ public class Weight {
     @GeneratedValue
     private Integer id;
 
-    private String name;
+    private Double weight;
 
-    private Date date;
-
+    @CreatedDate
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private Date createdAt;
     @ManyToOne
     @JoinColumn(name = "user_id",nullable = false)
     private User user;
