@@ -32,6 +32,17 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private  Role role;
 
+    public Objective getObjective() {
+        return objective;
+    }
+
+    public void setObjective(Objective objective) {
+        this.objective = objective;
+    }
+
+    @Enumerated(EnumType.STRING)
+    private Objective objective;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));

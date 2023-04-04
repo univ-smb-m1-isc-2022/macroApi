@@ -1,5 +1,6 @@
 package com.irilind.macro.auth;
 
+import com.irilind.macro.user.Objective;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,4 +16,5 @@ public class RegisterRequest {
     private String lastname;
     private String email;
     private String password;
+    private Objective objective;
 }
