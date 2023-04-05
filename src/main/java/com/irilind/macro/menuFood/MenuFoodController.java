@@ -28,7 +28,7 @@ public class MenuFoodController {
     }
 
     @GetMapping("/menu/{menuId}")
-    public List<MenuFood> getAllByMenuId(@PathVariable Long menuId){
+    public List<MenuFood> getAllByMenuId(@PathVariable Integer menuId){
         return menuFoodService.getAllByMenuId(menuId);
     }
 
@@ -48,4 +48,8 @@ public class MenuFoodController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping("/recommend/{chosenFoodId}")
+    public List<Integer> recommendFoods(@PathVariable Integer chosenFoodId) {
+        return menuFoodService.recommendFoods(chosenFoodId);
+    }
 }
