@@ -19,7 +19,7 @@ public class AuthenticationController {
         return ResponseEntity.ok(service.CheckIfTokenValid(request.getToken()));
     }
     @PostMapping("/register")
-    public ResponseEntity<AuthenticationResponse> register(
+    public ResponseEntity<RegisterResponse> register(
             @RequestBody RegisterRequest request
     ) {
         return ResponseEntity.ok(service.register(request));

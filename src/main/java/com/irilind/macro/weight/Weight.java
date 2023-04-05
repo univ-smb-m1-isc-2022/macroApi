@@ -1,16 +1,13 @@
 package com.irilind.macro.weight;
 
-import com.irilind.macro.foods.Food;
 import com.irilind.macro.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
+import java.util.Date;
 import org.springframework.data.annotation.CreatedDate;
-
-import java.sql.Date;
 
 @Data
 @Builder
@@ -19,15 +16,22 @@ import java.sql.Date;
 @Entity
 public class Weight {
     @Id
-    @GeneratedValue
+    @GeneratedValue()
     private Integer id;
 
+    @Column(nullable = false)
     private Double weight;
 
+    @Column(name = "created_at", updatable = false)
     @CreatedDate
-    @Column(name = "created_at", nullable = false, updatable = false)
     private Date createdAt;
+
     @ManyToOne
-    @JoinColumn(name = "user_id",nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+    @PrePersist
+    protected void onCreate() {
+        createdAt = new Date();
+    }
 }

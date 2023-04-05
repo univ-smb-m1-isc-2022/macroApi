@@ -29,11 +29,13 @@ public class AuthenticationService {
                 .build();
     }
 
-    public AuthenticationResponse register(RegisterRequest request) {
+    public RegisterResponse register(RegisterRequest request) {
         var user = User.builder()
                 .firstname(request.getFirstname())
                 .lastname(request.getLastname())
                 .email(request.getEmail())
+                .objective(request.getObjective())
+                .size(request.getSize())
                 .objective(request.getObjective())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.USER)
@@ -41,8 +43,12 @@ public class AuthenticationService {
         var savedUser = repository.save(user);
         var jwtToken = jwtService.generateToken(user);
         saveUserToken(savedUser, jwtToken);
-        return AuthenticationResponse.builder()
+        return RegisterResponse.builder()
                 .token(jwtToken)
+                .email(user.getEmail())
+                .size(user.getSize())
+                .objective(user.getObjective())
+                .id(user.getId())
                 .build();
     }
 
@@ -61,6 +67,9 @@ public class AuthenticationService {
         return AuthenticationResponse.builder()
                 .token(jwtToken)
                 .email(user.getEmail())
+                .id(user.getId())
+                .objective(user.getObjective())
+                .size(user.getSize())
                 .build();
     }
 

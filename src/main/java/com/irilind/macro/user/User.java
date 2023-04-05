@@ -23,11 +23,19 @@ public class User implements UserDetails {
     @jakarta.persistence.Id
     @GeneratedValue
     private Integer Id;
+
+    @Column(nullable = false)
     private String firstname;
+
+    @Column(nullable = false)
     private String lastname;
 
     @Column(unique = true)
     private String email;
+
+    @Column(nullable = false)
+    private Integer size;
+    @Column(nullable = false)
     private String password;
     @Enumerated(EnumType.STRING)
     private  Role role;
