@@ -1,4 +1,4 @@
-FROM openjdk:17-jdk-slim
+FROM eclipse-temurin:17-alpine
 
 COPY ./target/macro-0.0.1-SNAPSHOT.jar .
 
