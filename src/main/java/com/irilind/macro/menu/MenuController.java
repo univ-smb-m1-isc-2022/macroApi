@@ -5,7 +5,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.print.Pageable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +21,7 @@ public class MenuController {
     }
 
     @PostMapping
-    public ResponseEntity<Map<String, Object>> createMenuApi(@RequestBody Menu menu){
+    public ResponseEntity<Map<String, Object>> createMenu(@RequestBody Menu menu){
         Menu service = menuService.createMenu(menu);
         Map<String, Object> response = new HashMap<>();
         response.put("id", menu.getId());

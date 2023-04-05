@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface FoodRepository extends JpaRepository<Food, Integer> {
 
-
+    List<Food> findFoodById(Integer id);
     List<Food> findAllByNameStartingWith(String startingChar, PageRequest pageable);
 
 }

@@ -34,7 +34,7 @@ public class MenuFoodController {
 
     @PostMapping
     public ResponseEntity<Map<String, Object>> createMenuFoodApi(@RequestBody MenuFood menuFood){
-         MenuFood service = menuFoodService.createMenuFood(menuFood);
+        MenuFood service = menuFoodService.createMenuFood(menuFood);
         Map<String, Object> response = new HashMap<>();
         response.put("success", true);
         return ResponseEntity.ok(response);

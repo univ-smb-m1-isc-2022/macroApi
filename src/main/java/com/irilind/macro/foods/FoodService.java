@@ -26,5 +26,9 @@ public class FoodService {
         return repository.findAllByNameStartingWith(startingChar, pageRequest);
     }
 
+    public List<Food> getFoodById(Integer id) {
+        return repository.findFoodById(id);
+    }
+
 
 }

@@ -25,6 +25,11 @@ public class FoodController {
         return ResponseEntity.ok("Food created");
     }
 
+    @GetMapping("/{id}")
+    public List<Food> getFoodById(@PathVariable Integer id){
+        return foodService.getFoodById(id);
+    }
+
     @GetMapping("/startingWith")
     public List<Food> getAllFoodStartingWith(@RequestParam("startingChar") String startingChar){
         PageRequest pageRequest = PageRequest.of(0, 10, Sort.by(Sort.Direction.ASC, "value"));
